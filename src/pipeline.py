@@ -1,3 +1,4 @@
+import os
 from datetime import date
 from pathlib import Path
 
@@ -17,10 +18,20 @@ def load_config(config_path: Path = DEFAULT_CONFIG_PATH) -> dict:
         return yaml.safe_load(f)
 
 
+def resolve_paths(config: dict) -> tuple[str, str]:
+    base = os.environ.get("GCS_BASE")
+    if base:
+        base = base.rstrip("/")
+        return f"{base}/raw", f"{base}/staging"
+    return (
+        str(PROJECT_ROOT / config["paths"]["raw_data"]),
+        str(PROJECT_ROOT / config["paths"]["staging_data"]),
+    )
+
+
 def run() -> None:
     config = load_config()
-    raw_dir = PROJECT_ROOT / config["paths"]["raw_data"]
-    staging_dir = PROJECT_ROOT / config["paths"]["staging_data"]
+    raw_dir, staging_dir = resolve_paths(config)
     run_date = date.today().isoformat()
 
     responses = fetch_weather_responses(config["locations"])
