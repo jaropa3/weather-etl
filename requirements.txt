@@ -1,12 +1,7 @@
 pandas
-SQLAlchemy
-pytest
-numpy
 pyarrow
 pyyaml
-openpyxl
-psycopg2
-logger
+numpy
 openmeteo-requests
 requests-cache
 retry-requests
