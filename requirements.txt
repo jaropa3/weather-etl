@@ -3,6 +3,7 @@ pyarrow
 pyyaml
 numpy
 openmeteo-requests
-requests-cache
-retry-requests
+requests_cache
+retry_requests
 gcsfs
+duckdb
