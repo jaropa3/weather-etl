@@ -1,0 +1,17 @@
+paths:
+  raw_data: data/raw
+  staging_data: data/staging
+
+locations:
+  - name: warsaw
+    latitude: 52.2298
+    longitude: 21.0118
+  - name: gabin
+    latitude: 52.3985
+    longitude: 19.7351
+  - name: plock
+    latitude: 52.5468
+    longitude: 19.7064
+  - name: sydney
+    latitude: -33.8678
+    longitude: 151.2073
