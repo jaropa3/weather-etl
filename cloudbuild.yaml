@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'europe-central2-docker.pkg.dev/weather-etl-494708/weather-etl/weather-etl:$COMMIT_SHA'
+      - '-t'
+      - 'europe-central2-docker.pkg.dev/weather-etl-494708/weather-etl/weather-etl:latest'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '--all-tags', 'europe-central2-docker.pkg.dev/weather-etl-494708/weather-etl/weather-etl']
+
+images:
+  - 'europe-central2-docker.pkg.dev/weather-etl-494708/weather-etl/weather-etl:$COMMIT_SHA'
+  - 'europe-central2-docker.pkg.dev/weather-etl-494708/weather-etl/weather-etl:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
