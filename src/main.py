@@ -1,15 +1,7 @@
 from pipeline import run
-import pyarrow.parquet as pq
-import duckdb
 
 if __name__ == "__main__":
 	run()
- 
-con = duckdb.connect()
-
-df = con.execute("SELECT* FROM 'data/staging/weather_warsaw.parquet' WHERE date >= now ()").df()
-
-print(df)
 
 
 #1. zapis do bazy na gcp i cron
